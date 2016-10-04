@@ -1,0 +1,9 @@
+C:\Users\ryanw\Documents\Visual Studio 2015\Projects\FantasyTracker\FantasyTracker.Data\bin\Debug\FantasyTracker.Data.dll.config
+C:\Users\ryanw\Documents\Visual Studio 2015\Projects\FantasyTracker\FantasyTracker.Data\bin\Debug\FantasyTracker.Data.dll
+C:\Users\ryanw\Documents\Visual Studio 2015\Projects\FantasyTracker\FantasyTracker.Data\bin\Debug\FantasyTracker.Data.pdb
+C:\Users\ryanw\Documents\Visual Studio 2015\Projects\FantasyTracker\FantasyTracker.Data\bin\Debug\EntityFramework.dll
+C:\Users\ryanw\Documents\Visual Studio 2015\Projects\FantasyTracker\FantasyTracker.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\ryanw\Documents\Visual Studio 2015\Projects\FantasyTracker\FantasyTracker.Data\bin\Debug\EntityFramework.xml
+C:\Users\ryanw\Documents\Visual Studio 2015\Projects\FantasyTracker\FantasyTracker.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\ryanw\Documents\Visual Studio 2015\Projects\FantasyTracker\FantasyTracker.Data\obj\Debug\FantasyTracker.Data.dll
+C:\Users\ryanw\Documents\Visual Studio 2015\Projects\FantasyTracker\FantasyTracker.Data\obj\Debug\FantasyTracker.Data.pdb

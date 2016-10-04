@@ -1,0 +1,26 @@
+﻿@model FantasyTracker.Web.Models.PowerRankingVM
+
+<style type="text/css">
+    .body {
+        display: table;
+    }
+    .left {
+        float: none;
+        display: table-cell;
+    }
+    .right {
+        float: none;
+        display: table-cell;
+        margin-top: 0;
+        padding-top: 0;
+    }
+</style>
+
+<div class="row body">
+    <div class="col-md-7 left">
+        @Html.Partial("_PowerRankingChart", Model.ChartModel)
+    </div>
+    <div class="col-md-5 right">
+        @Html.TextAreaFor(m => m.ChartHtml, new { @style = "height: 100%; width: 100%;" })
+    </div>
+</div>

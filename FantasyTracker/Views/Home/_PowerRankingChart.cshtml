@@ -1,0 +1,244 @@
+﻿@using FantasyTracker.Data.Models
+@using FantasyTracker.Logic.Enums
+@model FantasyTracker.Web.Models.PowerRankingChartVM
+
+<style type="text/css">
+    #powerRanking {
+        width: 100%;
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid white;
+        border-radius: 3px;
+    }
+    #powerRanking table {
+        border: 0px solid black;
+        font-size: 12px;
+        width: 100%;
+        border-collapse: collapse;
+    }
+    #powerRanking table tr {
+        background-color: #F8F8F2;
+    }
+    #powerRanking table tr:nth-child(odd) {
+        background-color: #F2F2E8;
+    }
+    #powerRanking table tr:nth-child(2) {
+        background-color: #6DBB75;
+    }
+    #powerRanking table tr:first-child {
+        width: 500px;
+        background-color: #1D7225;
+        color: white;
+        text-align: center;
+    }
+    th {
+        border-radius: 3px 3px 0px 0px;
+    }
+    tr.rank {
+        height: 60px;
+        vertical-align: middle;
+    }
+    tr.rank td:first-child {
+        font-size: 20px;
+        text-align: center;
+        vertical-align: middle;
+        width: 10%;
+    }
+    .ranking {
+        border-radius: 50px;
+        color: white;
+        padding: 0px;
+        margin: auto;
+    }
+    tr.rank:nth-child(3) .ranking {
+        background: #1D7225;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+    tr.rank:nth-child(4) .ranking {
+        background: #1D7225;
+        width: 45px;
+        height: 45px;
+        line-height: 45px;
+    }
+    tr.rank:nth-child(5) .ranking {
+        background: #1D7225;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+    }
+    tr.rank:nth-child(6) .ranking {
+        background: #1D7225;
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+    }
+    tr.rank:nth-child(7) .ranking {
+        background: #1D7225;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+    }
+    tr.rank:nth-child(8) .ranking {
+        background: firebrick;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+    }
+    tr.rank:nth-child(9) .ranking {
+        background: firebrick;
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+    }
+    tr.rank:nth-child(10) .ranking {
+        background: firebrick;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+    }
+    tr.rank:nth-child(11) .ranking {
+        background: firebrick;
+        width: 45px;
+        height: 45px;
+        line-height: 45px;
+    }
+    tr.rank:nth-child(12) .ranking {
+        background: firebrick;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+    tr.rank td:nth-child(2) {
+        width: 10%;
+        vertical-align: middle;
+    }
+    tr.rank td:nth-child(3) {
+        width: 10%;
+        vertical-align: middle;
+    }
+    tr.rank td:nth-child(4) {
+        width: 15%;
+        vertical-align: middle;
+    }
+    tr.rank td:nth-child(5) {
+        width: 55%;
+        vertical-align: middle;
+        font-size: 10px;
+    }
+    .teamPicture div {
+        height: 55px;
+        width: 55px;
+        background-position: 50% 50%;
+        background-size: auto 55px;
+        background-repeat: no-repeat;
+    }
+    .team-name {
+        font-size: 14px;
+    }
+    .team-name a {
+        text-decoration: none !important;
+        color: #225DB7 !important;
+    }
+    .team-record {
+        color: #888;
+    }
+    .up {
+        border-bottom: 8px solid green;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        width: 0px;
+        position: relative;
+        left: 17px;
+        top: 6px;
+    }
+    .down {
+        border-top: 8px solid red;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        width: 0px;
+        position: relative;
+        top: 7px;
+        left: 17px;
+    }
+    .no-change {
+        border-top: 8px solid transparent;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+    }
+    .delta {
+        width: 20px;
+        position: relative;
+        font-size: 17px;
+        line-height: 20px;
+        top: -9px;
+        left: 26px;
+    }
+    .delta-up {
+        color: green;
+    }
+    .delta-down {
+        color: red;
+    }
+    .last-weeks-position {
+        color: #888;
+        font-size: 10px;
+        top: -5px;
+        position: relative;
+    }
+    .center {
+        text-align: center;
+    }
+</style>
+
+<div id="powerRanking">
+    <table>
+        <tr>
+            <th colspan="5" class="text-center">
+                <h5>@Model.Season Power Rankings: @Model.Week</h5>
+            </th>
+        </tr>
+        <tr>
+            <td class="center"><b>Rank</b></td>
+            <td colspan="2" class="center"><b>Team / Record</b></td>
+            <td class="center"><b>Trending</b></td>
+            <td class="center"><b>Comments</b></td>
+        </tr>
+        @foreach (var team in Model.Teams)
+        {
+            <tr class="rank">
+                <td>
+                    <div class="ranking">@team.Rank</div>
+                </td>
+                <td class="teamPicture"><div style="background-image: url(@team.ImageUrl)"></div></td>
+                <td>
+                    <div class="team-name"><a href="@team.PageUrl">@team.Name</a></div>
+                    <div class="team-record">@team.Record</div>
+                </td>
+                <td class="center">
+                    <div>
+                        @if (team.RankChange == RankChange.Increased)
+                        {
+                            <div class="up"></div>
+                            <div class="delta delta-up">@team.NumberOfRanksChanged</div>
+                        }
+                        else if (team.RankChange == RankChange.Decreased)
+                        {
+                            <div class="down"></div>
+                            <div class="delta delta-down">@team.NumberOfRanksChanged</div>
+                        }
+                        else
+                        {
+                            <div class="no-change"></div>
+                            <div class="delta ">--</div>
+                        }
+                    </div>
+                    <div class="last-weeks-position">Last Week: @team.RankLastWeek</div>
+                </td>
+                <td class="center">@team.Comments</td>
+            </tr>
+        }
+    </table>
+</div>
